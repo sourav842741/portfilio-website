@@ -45,7 +45,7 @@ const Hero = () => {
               View My Work
             </motion.a>
             <motion.a 
-              href="https://drive.google.com/file/d/1p3gIgExpQE_7MGGahuVUlgxjnLJVHKf8/view?usp=sharing"
+              href="https://drive.google.com/file/d/1pUoaDa1WW4S29b8nkXkLS4yx1db25Yyp/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="px-8 py-3 border-2 border-blue-500/50 text-blue-400 rounded-full font-semibold hover:bg-blue-500/10 transition-all duration-300 inline-block text-center"
