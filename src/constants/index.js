@@ -1,3 +1,4 @@
+
 import {
   backend,
   creator,
@@ -9,7 +10,7 @@ import {
   project3,
   project4,
   project5,
-  project7,
+  project6,
   mysql,
   express,
   git,
@@ -173,15 +174,15 @@ const projects = [
 },
 
   {
-  name: "Quick Zaikaa",
+  name: "Quick Zaikaa- Food Delivery Website",
   description:
-    "Quick Zaikaa is a modern food delivery web application inspired by Swiggy, built using React and Redux. It allows users to browse restaurants, filter them by ratings, cuisine, and budget, and quickly add food items to the cart. The app features a responsive UI built with Tailwind CSS, shimmer loading effects for better UX, and offline detection. Ideal for learning real-world React patterns and state management.",
+    "Quick Zaikaa is a modern food delivery web application  built using React and Redux. It allows users to browse restaurants, filter them by ratings, cuisine, and budget, and quickly add food items to the cart. The app features a responsive UI built with Tailwind CSS, shimmer loading effects for better UX, and offline detection.",
   tags: [
     { name: "React", color: "blue-text-gradient" },
     { name: "Redux", color: "green-text-gradient" },
     { name: "Tailwind CSS", color: "pink-text-gradient" },
   ],
-  image: project7, 
+  image: project6, 
   source_code_link: "https://github.com/sourav842741/Quick-Zaikaa.git",
   live_demo_link: "https://quick-zaikaa.onrender.com/",
 },
