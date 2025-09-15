@@ -10,6 +10,7 @@ import {
   project4,
   project6,
   project5,
+  project 7,
   mysql,
   express,
   git,
@@ -171,6 +172,21 @@ const projects = [
   source_code_link: "https://github.com/sourav842741/Creovue-Social-Media",
   live_demo_link: "https://creovue-social-media.onrender.com",
 },
+
+  {
+  name: "Quick Zaikaa",
+  description:
+    "Quick Zaikaa is a modern food delivery web application inspired by Swiggy, built using React and Redux. It allows users to browse restaurants, filter them by ratings, cuisine, and budget, and quickly add food items to the cart. The app features a responsive UI built with Tailwind CSS, shimmer loading effects for better UX, and offline detection. Ideal for learning real-world React patterns and state management.",
+  tags: [
+    { name: "React", color: "blue-text-gradient" },
+    { name: "Redux", color: "green-text-gradient" },
+    { name: "Tailwind CSS", color: "pink-text-gradient" },
+  ],
+  image: project 7, 
+  source_code_link: "https://github.com/sourav842741/Quick-Zaikaa.git",
+  live_demo_link: "https://quick-zaikaa.onrender.com/",
+},
+
 
 {
   name: "Airbnb - Clone",
