@@ -189,19 +189,21 @@ const projects = [
 
 
 {
-  name: "Airbnb - Clone",
+  name: "OpenTube – YouTube like Project",
   description:
-    "A full-stack Airbnb-inspired web application that allows users to browse, search, and book unique stays. Features include dynamic property listings, individual property detail pages, responsive design, and seamless booking flow. Built with EJS, Bootstrap, JavaScript, and MongoDB for a smooth and interactive user experience.",
+    "OpenTube is a full-stack YouTube-inspired web application built with React, Tailwind CSS, Node.js, and MongoDB. It allows users to upload, watch, like, and comment on videos.",
   tags: [
-    { name: "ejs", color: "blue-text-gradient" },
-    { name: "JavaScript", color: "pink-text-gradient" },
-    { name: "bootstrap", color: "green-text-gradient" },
+    { name: "React", color: "blue-text-gradient" },
+    { name: "Tailwind CSS", color: "pink-text-gradient" },
+    { name: "Node.js", color: "green-text-gradient" },
+    { name: "Express", color: "orange-text-gradient" },
     { name: "MongoDB", color: "white-text-gradient" },
   ],
   image: project3,
-  source_code_link: "https://github.com/sourav842741/AirNb-clone",
-  live_demo_link: "https://airnb-clone-1.onrender.com/",
+  source_code_link: "https://github.com/sourav842741/Open-Tube",
+  live_demo_link: "https://open-tube-1.onrender.com/",
 },
+
  {
   name: "Blinkit Clone",
   description:
