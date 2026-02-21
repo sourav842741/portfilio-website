@@ -105,9 +105,9 @@ const About = () => {
     🚀 <b>Full-Stack Developer | Problem Solver | Innovator</b> skilled in <b>Java, JavaScript, React, Node.js, and Express.js</b>. Experienced in building <b>scalable web apps</b> including a Learning Portal, Social Media Platform, Hostel Listing App, E-Commerce Store, and Weather App.
     <br /><br />
     🎓 <b>Education:</b> <br />
-    <b>Computer Science Engineering (CSE)</b> | Abacus Institute of Engineering And Management – (Mogra) | CGPA: <b>8.7</b> | (10-2-2025) <br />
-    <b>XII (PSEB)</b> | Indian Public School | <b>89.7%</b> | 2022 <br />
-    <b>X (PSEB)</b> | Dr. Ambedkar Vidiya Mandir | <b>99.9%</b> | 2020
+    <b>Computer Science Engineering (CSE)</b> | Abacus Institute of Engineering And Management – (Mogra) | CGPA: <b>8.1</b> | (10-2-2025) <br />
+    <b>XII (PSEB)</b> | Indian Public School | <b>88.2%</b> | 2022 <br />
+    <b>X (PSEB)</b> | Dr. Ambedkar Vidiya Mandir | <b>95.0%</b> | 2020
   </p>
 </div>
 

@@ -28,6 +28,10 @@ import tailwind from "./tech/tailwind.png";
 import project4 from './project4.png';
 import project5 from './project5.png';
 import project6 from './project6.png';
+import project8 from './project8.png';
+import project9 from './project9.png';
+import project10 from './project10.png';
+import project11 from './project11.png';
 
 
 export {
@@ -61,5 +65,9 @@ export {
   project4,
   project5,
   project6,
+  project8,
+  project9,
+  project10,
+  project11,
   
 };

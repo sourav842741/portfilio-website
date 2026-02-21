@@ -22,6 +22,11 @@ import {
   redux,
   tailwind,
   project1,
+  project8,
+  project9,
+  project10,
+  project11,
+  
 } from "../assets";
 
 export const navLinks = [
@@ -120,7 +125,7 @@ const technologies = [
 const experiences = [
   {
     title: "Frontend Development Intern",
-    company_name: "IBM",
+    company_name: "IBM SkillsBuild Project",
     icon: undefined,
     iconBg: "#383E56",
     date: "4 Weeks",
@@ -140,6 +145,67 @@ const achievements = [
 ];
 
 const projects = [
+  {
+  name: "MultiCart – Multi-Vendor Marketplace Platform",
+  description:
+    "A modern multi-vendor marketplace application that enables users to create their own online stores and manage products independently. The platform includes seller onboarding, dynamic product listing, cart management, and a scalable frontend architecture. Designed for business scalability and smooth user experience using optimized component structure and state management.",
+  tags: [
+    { name: "Next.js", color: "white-text-gradient" },
+    { name: "TypeScript", color: "blue-text-gradient" },
+    { name: "Tailwind CSS", color: "white-text-gradient" },
+    { name: "Marketplace Platform", color: "green-text-gradient" },
+    { name: "Vercel Deployment", color: "pink-text-gradient" },
+  ],
+  image: project11,
+  source_code_link: "https://github.com/sourav842741/Multicart",
+  live_demo_link: "https://multicart-omega.vercel.app/",
+},
+  {
+  name: "function-contract – Runtime API Validator",
+  description:
+    "A lightweight npm package designed to validate API responses and function outputs at runtime. It helps detect frontend-backend mismatches instantly by enforcing structured data contracts, preventing silent UI failures and improving application reliability.",
+  tags: [
+    { name: "JavaScript", color: "yellow-text-gradient" },
+    { name: "Node.js", color: "green-text-gradient" },
+    { name: "NPM Package", color: "white-text-gradient" },
+    { name: "Runtime Validation", color: "blue-text-gradient" },
+    { name: "API Development", color: "pink-text-gradient" },
+  ],
+  image: project10,
+  source_code_link: "https://github.com/sourav842741/function-contracter",
+  live_demo_link: "https://www.npmjs.com/package/function-contract",
+},
+  {
+  name: "Customer Support AI – Intelligent Chat Assistant",
+  description:
+    "An AI-powered customer support application built using Next.js and TypeScript. The platform integrates Google's Gemini API to generate intelligent and real-time responses to user queries. It features a dynamic chat interface, API routes for backend logic, and a fully responsive modern UI.",
+  tags: [
+    { name: "Next.js", color: "white-text-gradient" },
+    { name: "TypeScript", color: "blue-text-gradient" },
+    { name: "Gemini API", color: "white-text-gradient" },
+    { name: "Tailwind CSS", color: "white-text-gradient" },
+    { name: "Vercel", color: "green-text-gradient" },
+  ],
+  image: project9,
+  source_code_link: "https://github.com/sourav842741/Customer-Support-ai",
+  live_demo_link: "https://customer-support-ai-virid.vercel.app/",
+},
+  {
+  name: "Study Sathi AI – Smart Learning Platform",
+  description:
+    "An AI-powered MERN stack web application built to enhance student learning experience. The platform provides secure authentication, AI-based doubt resolution, interactive study sessions, progress tracking, and a modern responsive interface to support efficient and personalized learning.",
+  tags: [
+    { name: "MongoDB", color: "green-text-gradient" },
+    { name: "Express.js", color: "blue-text-gradient" },
+    { name: "React.js", color: "pink-text-gradient" },
+    { name: "Node.js", color: "yellow-text-gradient" },
+    { name: "Tailwind CSS", color: "white-text-gradient" },
+    { name: "Artificial Intelligence", color: "white-text-gradient" },
+  ],
+  image: project8,
+  source_code_link: "https://github.com/sourav842741/StudySathi---Ai",
+  live_demo_link: "https://studysathi-ai-client.onrender.com/auth",
+},
   {
     name: "E-Learning Management System",
     description:
