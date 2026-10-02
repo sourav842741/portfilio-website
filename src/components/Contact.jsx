@@ -32,10 +32,10 @@ const Contact = () => {
 
     // build payload matching your template's {{name}}, {{email}}, {{message}}, {{time}}
     const params = {
-      name:    form.name,
-      email:   form.email,
+      name: form.name,
+      email: form.email,
       message: form.message,
-      time:    new Date().toLocaleString(),
+      time: new Date().toLocaleString(),
     };
 
     emailjs

@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 const Tech = () => {
   useEffect(() => {
     gsap.fromTo(
-      ".tech-icon",  
+      ".tech-icon",
       {
         opacity: 0,
         y: 80
@@ -18,16 +18,16 @@ const Tech = () => {
 
 
 
-        
+
         opacity: 1,
         y: 0,
         duration: 2.5,
-        stagger: 0.1, 
+        stagger: 0.1,
         scrollTrigger: {
-          trigger: ".tech-icons-wrapper", 
-          start: "top 80%", 
-          end: "bottom 70%", 
-          scrub: true, 
+          trigger: ".tech-icons-wrapper",
+          start: "top 80%",
+          end: "bottom 70%",
+          scrub: true,
         },
       }
     );

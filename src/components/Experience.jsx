@@ -22,13 +22,13 @@ const ExperienceCard = ({ experience, index }) => {
         borderRadius: "16px",
         boxShadow: "0 8px 32px rgba(0, 0, 0, 0.3)",
       }}
-      contentArrowStyle={{ 
+      contentArrowStyle={{
         borderRight: "7px solid rgba(59, 130, 246, 0.3)",
         borderLeft: "7px solid rgba(59, 130, 246, 0.3)",
       }}
       date={experience.date}
       dateClassName="text-blue-400 font-semibold"
-      iconStyle={{ 
+      iconStyle={{
         background: "linear-gradient(135deg, #3b82f6, #8b5cf6)",
         boxShadow: "0 4px 16px rgba(59, 130, 246, 0.4)",
       }}
@@ -82,7 +82,7 @@ const ExperienceCard = ({ experience, index }) => {
 const Experience = () => {
   return (
     <>
-      <motion.div 
+      <motion.div
         variants={textVariant()}
         className="text-center mb-16"
       >

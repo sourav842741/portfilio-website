@@ -1,130 +1,99 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-
-import { styles } from "../styles";
-import { navLinks } from "../constants";
-import { logo, menu, close } from "../assets";
+import React, { useState, useEffect } from "react";
 
 const Navbar = () => {
-  const [active, setActive] = useState("");
-  const [toggle, setToggle] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      if (scrollTop > 100) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 40);
     };
-
     window.addEventListener("scroll", handleScroll);
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const navLinks = [
+    { title: "ABOUT", href: "#about" },
+    { title: "CUSTOMERS", href: "#customers" },
+    { title: "PROJECTS", href: "#projects" },
+    { title: "CONTACT", href: "#contact" },
+  ];
+
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
-      className={`${
-        styles.paddingX
-      } w-full flex items-center py-5 fixed top-0 z-20 transition-all duration-300 ${
-        scrolled 
-          ? "bg-black/80 backdrop-blur-md border-b border-blue-500/20" 
-          : "bg-transparent"
+    <header
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        scrolled ? "bg-[#020014]/80 backdrop-blur-md py-4 border-b border-white/5" : "bg-transparent py-6"
       }`}
     >
-      <div className='w-full flex justify-between items-center max-w-7xl mx-auto'>
-        <motion.div
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <Link
-            to='/'
-            className='flex items-center gap-3'
-            onClick={() => {
-              setActive("");
-              window.scrollTo(0, 0);
-            }}
-          >
-            <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">SK</span>
-            </div>
-            <p className='text-white text-[20px] font-bold cursor-pointer'>
-              Sourav Kumar
-            </p>
-          </Link>
-        </motion.div>
-
-        <ul className='list-none hidden sm:flex flex-row gap-8'>
-          {navLinks.map((nav, index) => (
-            <motion.li
-              key={nav.id}
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className={`relative group ${
-                active === nav.title ? "text-blue-400" : "text-gray-300"
-              } hover:text-blue-400 text-[16px] font-medium cursor-pointer transition-colors duration-300`}
-              onClick={() => setActive(nav.title)}
+      <div className="max-w-[1400px] mx-auto px-6 sm:px-12 flex justify-between items-center">
+        {/* Desktop 4 links spread evenly across full width */}
+        <nav className="w-full hidden md:flex justify-between items-center">
+          {navLinks.map((link) => (
+            <a
+              key={link.title}
+              href={link.href}
+              className="text-white/80 hover:text-white font-body text-[12px] sm:text-[13px] font-bold tracking-[0.2em] transition-colors uppercase duration-200 relative group py-2"
             >
-              <a href={`#${nav.id}`} className="relative">
-                {nav.title}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 transition-all duration-300 group-hover:w-full"></span>
-              </a>
-            </motion.li>
+              {link.title}
+              <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-gradient-to-r from-purple-500 via-fuchsia-500 to-pink-500 transition-all duration-300 group-hover:w-full" />
+            </a>
           ))}
-        </ul>
+        </nav>
 
-        <div className='sm:hidden flex flex-1 justify-end items-center'>
-          <motion.img
-            src={toggle ? close : menu}
-            alt='menu'
-            className='w-[28px] h-[28px] object-contain cursor-pointer'
-            onClick={() => setToggle(!toggle)}
-            whileTap={{ scale: 0.9 }}
-          />
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8, y: -20 }}
-            animate={{ 
-              opacity: toggle ? 1 : 0, 
-              scale: toggle ? 1 : 0.8, 
-              y: toggle ? 0 : -20 
-            }}
-            transition={{ duration: 0.3 }}
-            className={`${
-              !toggle ? "pointer-events-none" : ""
-            } p-6 bg-black/90 backdrop-blur-md absolute top-20 right-0 mx-4 my-2 min-w-[160px] z-10 rounded-2xl border border-blue-500/20`}
+        {/* Mobile Header: Logo/Initials + Hamburger */}
+        <div className="w-full flex md:hidden justify-between items-center">
+          <a href="#" className="font-display text-white text-lg tracking-wider">
+            SK.3D
+          </a>
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="text-white p-2 focus:outline-none"
+            aria-label="Toggle Navigation"
           >
-            <ul className='list-none flex justify-end items-start flex-1 flex-col gap-4'>
-              {navLinks.map((nav, index) => (
-                <motion.li
-                  key={nav.id}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.1 }}
-                  className={`font-medium cursor-pointer text-[16px] ${
-                    active === nav.title ? "text-blue-400" : "text-gray-300"
-                  } hover:text-blue-400 transition-colors duration-300`}
-                  onClick={() => {
-                    setToggle(!toggle);
-                    setActive(nav.title);
-                  }}
-                >
-                  <a href={`#${nav.id}`}>{nav.title}</a>
-                </motion.li>
-              ))}
-            </ul>
-          </motion.div>
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              {mobileMenuOpen ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
+            </svg>
+          </button>
         </div>
       </div>
-    </motion.nav>
+
+      {/* Mobile Menu Dropdown */}
+      {mobileMenuOpen && (
+        <div className="md:hidden bg-[#020014]/95 backdrop-blur-xl border-b border-white/10 px-6 py-6 transition-all duration-300">
+          <div className="flex flex-col space-y-4">
+            {navLinks.map((link) => (
+              <a
+                key={link.title}
+                href={link.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-white/90 hover:text-white font-body text-sm font-bold tracking-[0.2em] py-2 border-b border-white/5"
+              >
+                {link.title}
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+    </header>
   );
 };
 

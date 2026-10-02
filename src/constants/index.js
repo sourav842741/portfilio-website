@@ -146,6 +146,48 @@ const achievements = [
 
 const projects = [
   {
+    name: "Place Mentors – AI Placement Preparation Platform",
+    description:
+      "Full-stack placement accelerator with AI study roadmaps, real-time multiplayer coding battle arena (Socket.io), resume analyzer, and DSA question tracking.",
+    tags: [
+      { name: "React 18", color: "blue-text-gradient" },
+      { name: "Socket.io", color: "green-text-gradient" },
+      { name: "Redux Toolkit", color: "pink-text-gradient" },
+      { name: "AI Mentorship", color: "white-text-gradient" },
+    ],
+    image: "/assets/projects/placementor.png",
+    source_code_link: "https://github.com/sourav842741/Place--Mentors.git",
+    live_demo_link: "https://placementor.online/",
+  },
+  {
+    name: "Nexus ERP – Multi-Channel Operations & Inventory Hub",
+    description:
+      "Enterprise Marketplace ERP featuring single-source-of-truth inventory ledger, automated order deductions, inter-warehouse transfers, dynamic RBAC, and multi-channel synchronization.",
+    tags: [
+      { name: "MERN Stack", color: "green-text-gradient" },
+      { name: "Socket.io", color: "blue-text-gradient" },
+      { name: "Inventory Ledger", color: "white-text-gradient" },
+      { name: "RBAC", color: "pink-text-gradient" },
+    ],
+    image: "/assets/projects/erp_dashboard.png",
+    source_code_link: "https://github.com/sourav842741/ERP-System.git",
+    live_demo_link: "https://erp-system-os.onrender.com",
+  },
+  {
+    name: "Yaadon Ki Gali – 90s Indian Nostalgia",
+    description:
+      "An interactive digital museum capturing 90s Indian culture with retro cassette players, CRT television scanline modals, live internet radio, and nostalgic ambient audio.",
+    tags: [
+      { name: "React 18", color: "blue-text-gradient" },
+      { name: "Web Audio", color: "yellow-text-gradient" },
+      { name: "Retro CRT", color: "pink-text-gradient" },
+      { name: "Vercel", color: "white-text-gradient" },
+    ],
+    image: "/assets/projects/yaade1.webp",
+    source_code_link: "https://github.com/sourav842741/90-s-ki-yaade.git",
+    live_demo_link: "https://90-s-ki-yaade.vercel.app/",
+  },
+  {
   name: "MultiCart – Multi-Vendor Marketplace Platform",
   description:
     "A modern multi-vendor marketplace application that enables users to create their own online stores and manage products independently. The platform includes seller onboarding, dynamic product listing, cart management, and a scalable frontend architecture. Designed for business scalability and smooth user experience using optimized component structure and state management.",
