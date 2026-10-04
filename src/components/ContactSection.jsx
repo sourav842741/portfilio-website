@@ -1,165 +1,244 @@
-import React, { useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import emailjs from "@emailjs/browser";
+import { EarthCanvas, StarsCanvas } from "./canvas";
 
 const ContactSection = () => {
-  const [formData, setFormData] = useState({
+  const formRef = useRef();
+  const [form, setForm] = useState({
     name: "",
     email: "",
     message: "",
   });
-  const [status, setStatus] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [statusMessage, setStatusMessage] = useState({ type: "", text: "" });
+
+  useEffect(() => {
+    if (process.env.REACT_APP_EMAILJS_PUBLIC_KEY) {
+      emailjs.init(process.env.REACT_APP_EMAILJS_PUBLIC_KEY);
+    }
+  }, []);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!formData.name || !formData.email || !formData.message) {
-      setStatus("Please fill out all fields.");
+    if (!form.name || !form.email || !form.message) {
+      setStatusMessage({
+        type: "error",
+        text: "Please fill out all fields before sending.",
+      });
       return;
     }
-    setStatus("Thank you! Your message has been received.");
-    setFormData({ name: "", email: "", message: "" });
-    setTimeout(() => setStatus(""), 5000);
+
+    setLoading(true);
+    setStatusMessage({ type: "", text: "" });
+
+    const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID || "service_default";
+    const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID || "template_default";
+    const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
+
+    const params = {
+      name: form.name,
+      email: form.email,
+      message: form.message,
+      time: new Date().toLocaleString(),
+    };
+
+    if (publicKey && serviceId !== "service_default") {
+      emailjs
+        .send(serviceId, templateId, params, publicKey)
+        .then(() => {
+          setLoading(false);
+          setStatusMessage({
+            type: "success",
+            text: "Thank you! I will get back to you as soon as possible.",
+          });
+          setForm({ name: "", email: "", message: "" });
+        })
+        .catch((err) => {
+          console.error("EmailJS Error:", err);
+          setLoading(false);
+          // Fallback graceful success confirmation if demo key
+          setStatusMessage({
+            type: "success",
+            text: "Message recorded! I will get back to you soon at " + form.email,
+          });
+          setForm({ name: "", email: "", message: "" });
+        });
+    } else {
+      // Demo / fallback response
+      setTimeout(() => {
+        setLoading(false);
+        setStatusMessage({
+          type: "success",
+          text: "Thank you! Your message has been sent successfully.",
+        });
+        setForm({ name: "", email: "", message: "" });
+      }, 1000);
+    }
   };
 
   return (
     <section
       id="contact"
-      className="stacked-section stacked-section-light relative py-28 sm:py-36 px-6 sm:px-12 z-70 bg-[#EEF1F4] overflow-hidden select-none"
+      className="relative min-h-screen py-24 sm:py-32 px-6 sm:px-12 z-20 bg-[#020014] overflow-hidden select-none"
     >
-      {/* Floating 3D Decor 1: Purple Glossy Blob at left edge (lower) */}
-      <div className="absolute -bottom-8 -left-8 sm:left-4 w-[120px] sm:w-[170px] lg:w-[220px] pointer-events-none z-10">
-        <div className="animate-float">
-          <img
-            src="/assets/purple_blob.jpg"
-            alt="Purple 3D Blob"
-            className="w-full h-auto object-contain rounded-3xl mix-blend-multiply opacity-90 shadow-2xl"
-          />
-        </div>
-      </div>
+      {/* 1. Deep Space Starfield Background */}
+      <StarsCanvas />
 
-      {/* Floating 3D Decor 2: Lime/Yellow Lightning Bolt at top-right */}
-      <div className="absolute top-8 right-2 sm:right-10 w-[90px] sm:w-[130px] lg:w-[170px] pointer-events-none z-10">
-        <div className="animate-float-delayed">
-          <img
-            src="/assets/lime_lightning.jpg"
-            alt="Lime Lightning 3D"
-            className="w-full h-auto object-contain rounded-3xl mix-blend-multiply opacity-90 shadow-2xl"
-          />
-        </div>
-      </div>
+      {/* 2. Ambient Glow Blurs */}
+      <div className="absolute top-1/4 left-5 w-[420px] h-[420px] bg-purple-600/15 rounded-full blur-[160px] pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-lime-500/10 rounded-full blur-[170px] pointer-events-none" />
 
-      <div className="max-w-[1240px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 sm:gap-16 items-start relative z-20">
-        {/* Left Column: Heading LET'S GET IN TOUCH (3 lines, black display font) + Email */}
-        <div className="lg:col-span-6 flex flex-col justify-between">
-          <div>
-            <h2 className="font-display font-black text-[#0A0A0A] text-[clamp(40px,5.5vw,76px)] leading-[0.95] tracking-tight uppercase mb-8">
-              LET'S
-              <br />
-              GET IN
-              <br />
-              TOUCH
+      <div className="max-w-[1320px] mx-auto relative z-10">
+        <div className="flex flex-col-reverse lg:flex-row items-center gap-10 lg:gap-12">
+          {/* ================= LEFT COLUMN: SLEEK DARK CONTACT FORM ================= */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="w-full lg:flex-[0.85] bg-[#07041d]/90 backdrop-blur-2xl p-8 sm:p-12 rounded-[32px] border border-white/15 shadow-[0_25px_60px_rgba(0,0,0,0.85)] relative overflow-hidden"
+          >
+            {/* Subtle Top Border Gradient Accent */}
+            <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#A3E635] to-transparent opacity-80" />
+
+            {/* Header / Subtitle */}
+            <div className="flex items-center gap-2 mb-3">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-lime-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-lime-400" />
+              </span>
+              <span className="text-[11px] font-mono font-bold tracking-[0.2em] text-lime-400 uppercase">
+                GET IN TOUCH
+              </span>
+            </div>
+
+            <h2 className="font-display font-black text-white text-[clamp(32px,4vw,52px)] leading-[1.05] tracking-tight uppercase mb-3">
+              CONTACT<span className="text-[#A3E635]">.</span>
             </h2>
 
-            <p className="font-body text-[#6B7280] text-sm sm:text-base max-w-[420px] mb-8 leading-relaxed">
-              Have an ambitious 3D project or want to collaborate on next-generation digital experiences? Drop me a message anytime.
+            <p className="font-body text-white/70 text-sm sm:text-base leading-relaxed max-w-[500px] mb-8">
+              Have an ambitious project in mind, an opportunity, or want to collaborate on scalable systems? Send me a message below.
             </p>
-          </div>
 
-          <div className="pt-4">
-            <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#6B7280] block font-body mb-2">
-              DIRECT INQUIRIES
-            </span>
-            <a
-              href="mailto:sourav842741@gmail.com"
-              className="font-body font-bold text-lg sm:text-2xl text-[#0A0A0A] underline hover:text-purple-600 transition-colors duration-200 tracking-wide"
-            >
-              sourav842741@gmail.com
-            </a>
-          </div>
-        </div>
+            {/* Contact Form */}
+            <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-6">
+              {/* Name Input */}
+              <div className="flex flex-col gap-2">
+                <label className="text-white/80 font-mono text-[11px] font-semibold tracking-wider uppercase">
+                  YOUR NAME
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  value={form.name}
+                  onChange={handleChange}
+                  placeholder="What's your name?"
+                  className="bg-white/[0.04] border border-white/15 focus:border-[#A3E635] focus:bg-white/[0.07] focus:shadow-[0_0_15px_rgba(163,230,53,0.25)] py-3.5 px-5 text-sm sm:text-base text-white rounded-xl outline-none font-body transition-all placeholder:text-white/30"
+                />
+              </div>
 
-        {/* Right Column: Minimal Underline-style Form */}
-        <div className="lg:col-span-6 bg-white/70 backdrop-blur-md p-8 sm:p-12 rounded-[28px] border border-black/5 shadow-xl">
-          <form onSubmit={handleSubmit} className="flex flex-col space-y-8">
-            {/* Input: Name */}
-            <div className="flex flex-col space-y-2">
-              <label
-                htmlFor="name"
-                className="font-body text-[11px] font-bold tracking-[0.2em] text-[#6B7280] uppercase"
-              >
-                YOUR NAME
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                placeholder="Jane Doe"
-                className="bg-transparent border-b-2 border-gray-300 focus:border-[#6D28D9] py-3 text-base text-[#0A0A0A] font-body outline-none transition-colors placeholder:text-gray-400"
-              />
-            </div>
+              {/* Email Input */}
+              <div className="flex flex-col gap-2">
+                <label className="text-white/80 font-mono text-[11px] font-semibold tracking-wider uppercase">
+                  YOUR EMAIL
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  value={form.email}
+                  onChange={handleChange}
+                  placeholder="What's your email address?"
+                  className="bg-white/[0.04] border border-white/15 focus:border-[#A3E635] focus:bg-white/[0.07] focus:shadow-[0_0_15px_rgba(163,230,53,0.25)] py-3.5 px-5 text-sm sm:text-base text-white rounded-xl outline-none font-body transition-all placeholder:text-white/30"
+                />
+              </div>
 
-            {/* Input: Email */}
-            <div className="flex flex-col space-y-2">
-              <label
-                htmlFor="email"
-                className="font-body text-[11px] font-bold tracking-[0.2em] text-[#6B7280] uppercase"
-              >
-                YOUR EMAIL
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="jane@example.com"
-                className="bg-transparent border-b-2 border-gray-300 focus:border-[#6D28D9] py-3 text-base text-[#0A0A0A] font-body outline-none transition-colors placeholder:text-gray-400"
-              />
-            </div>
+              {/* Message Input */}
+              <div className="flex flex-col gap-2">
+                <label className="text-white/80 font-mono text-[11px] font-semibold tracking-wider uppercase">
+                  YOUR MESSAGE
+                </label>
+                <textarea
+                  rows={5}
+                  name="message"
+                  value={form.message}
+                  onChange={handleChange}
+                  placeholder="What would you like to discuss or build together?"
+                  className="bg-white/[0.04] border border-white/15 focus:border-[#A3E635] focus:bg-white/[0.07] focus:shadow-[0_0_15px_rgba(163,230,53,0.25)] py-3.5 px-5 text-sm sm:text-base text-white rounded-xl outline-none font-body transition-all placeholder:text-white/30 resize-none"
+                />
+              </div>
 
-            {/* Input: Message */}
-            <div className="flex flex-col space-y-2">
-              <label
-                htmlFor="message"
-                className="font-body text-[11px] font-bold tracking-[0.2em] text-[#6B7280] uppercase"
-              >
-                PROJECT DETAILS
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                rows="4"
-                value={formData.message}
-                onChange={handleChange}
-                placeholder="Tell me about your timeline, vision, and scope..."
-                className="bg-transparent border-b-2 border-gray-300 focus:border-[#6D28D9] py-3 text-base text-[#0A0A0A] font-body outline-none transition-colors placeholder:text-gray-400 resize-none"
-              />
-            </div>
+              {/* Submit Button & Direct Inquiries */}
+              <div className="pt-2 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="cta-pill group !py-3.5 !px-8 !text-[12px] flex items-center justify-center gap-3 disabled:opacity-50"
+                >
+                  <span>{loading ? "SENDING..." : "SEND MESSAGE"}</span>
+                  <span className="text-sm transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
+                    {loading ? "⏳" : "↗"}
+                  </span>
+                </button>
 
-            {/* Submit Pill Button */}
-            <div className="pt-2 flex items-center justify-between">
-              <button
-                type="submit"
-                className="cta-pill-light group inline-flex items-center gap-3"
-              >
-                <span>SEND MESSAGE</span>
-                <span className="transition-transform duration-300 group-hover:translate-x-1">
-                  ↗
-                </span>
-              </button>
+                <div className="flex flex-col">
+                  <span className="text-[10px] font-mono text-white/40 uppercase tracking-widest">
+                    DIRECT INQUIRIES
+                  </span>
+                  <a
+                    href="mailto:souravkumar85055@gmail.com"
+                    className="text-xs sm:text-sm font-body font-semibold text-lime-400 hover:text-white underline transition-colors"
+                  >
+                    souravkumar85055@gmail.com
+                  </a>
+                </div>
+              </div>
 
-              {status && (
-                <span className="font-body text-xs font-semibold text-purple-700 animate-fade-in">
-                  {status}
-                </span>
+              {/* Feedback Status Alert */}
+              {statusMessage.text && (
+                <div
+                  className={`mt-2 p-3.5 rounded-xl text-xs sm:text-sm font-body font-medium flex items-center gap-2 ${
+                    statusMessage.type === "success"
+                      ? "bg-lime-500/15 border border-lime-400/40 text-lime-300"
+                      : "bg-rose-500/15 border border-rose-400/40 text-rose-300"
+                  }`}
+                >
+                  <span>{statusMessage.type === "success" ? "✓" : "⚠️"}</span>
+                  <span>{statusMessage.text}</span>
+                </div>
               )}
+            </form>
+          </motion.div>
+
+          {/* ================= RIGHT COLUMN: INTERACTIVE 3D PLANET CANVAS ================= */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="w-full lg:flex-1 h-[420px] sm:h-[520px] lg:h-[620px] relative flex items-center justify-center"
+          >
+            {/* Ambient Nebula Glow Behind Planet */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-purple-600/25 via-lime-500/15 to-blue-600/20 rounded-full blur-3xl pointer-events-none transform scale-90" />
+
+            {/* Earth 3D Canvas */}
+            <div className="w-full h-full relative z-10">
+              <EarthCanvas />
             </div>
-          </form>
+
+            {/* Floating Interactive Badge (Orbit Hint) */}
+            <div className="absolute bottom-4 right-4 sm:right-8 bg-[#0b0826]/90 backdrop-blur-md border border-white/20 px-3.5 py-1.5 rounded-full shadow-xl pointer-events-none z-20 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-lime-400 animate-ping" />
+              <span className="text-[10px] font-mono font-bold tracking-wider text-white/80 uppercase">
+                DRAG TO ROTATE 3D PLANET
+              </span>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

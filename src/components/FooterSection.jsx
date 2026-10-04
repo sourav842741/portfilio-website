@@ -161,25 +161,13 @@ const FooterSection = () => {
               <div className="flex flex-col space-y-3 text-[12px] sm:text-[13px] font-body text-white/80">
                 <div>
                   <span className="text-[10px] text-white/40 tracking-wider uppercase block font-mono">
-                    Primary Email
+                    Direct Email
                   </span>
                   <a
                     href="mailto:souravkumar85055@gmail.com"
-                    className="hover:text-purple-400 transition-colors underline break-all text-xs"
+                    className="hover:text-lime-400 transition-colors underline break-all text-xs font-semibold text-white/90"
                   >
                     souravkumar85055@gmail.com
-                  </a>
-                </div>
-
-                <div>
-                  <span className="text-[10px] text-white/40 tracking-wider uppercase block font-mono">
-                    Secondary Email
-                  </span>
-                  <a
-                    href="mailto:sourav842741@gmail.com"
-                    className="hover:text-purple-400 transition-colors underline break-all text-xs"
-                  >
-                    sourav842741@gmail.com
                   </a>
                 </div>
 
