@@ -174,22 +174,8 @@ const Hero = () => {
             </span>
           </motion.div>
 
-          {/* 3-Tier Dynamic Headline with Reduced Font Size & Buttery Smooth Typewriter Animation */}
+          {/* Dynamic Headline with Reduced Font Size & Buttery Smooth Typewriter Animation */}
           <div className="flex flex-col mb-4 relative">
-            {/* Top Tier: Warm Orange/Amber Handwritten Accent */}
-            <motion.span
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.05 }}
-              className="text-amber-400 font-bold text-lg sm:text-xl tracking-wide italic mb-1"
-              style={{
-                fontFamily: "var(--font-display)",
-                letterSpacing: "0.02em",
-                textShadow: "0 0 20px rgba(251, 191, 36, 0.4)",
-              }}
-            >
-              Professional
-            </motion.span>
 
             {/* Middle Tier: Bold Clean White Sans (Scaled down for balance) */}
             <motion.h1

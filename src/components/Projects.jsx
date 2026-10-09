@@ -10,7 +10,7 @@ const Projects = () => {
 
   const titleSolidOpacity = useTransform(scrollYProgress, [0.3, 0.8], [0, 1]);
 
-  // Sourav's real projects including the 3 new flagship additions
+  // Sourav's real projects including OpenTube, BlogVerse & flagship additions
   const projectsData = [
     {
       id: "01",
@@ -50,6 +50,42 @@ const Projects = () => {
     },
     {
       id: "04",
+      name: "OPENTUBE",
+      type: "FULL-STACK VIDEO STREAMING PLATFORM",
+      desc: "Comprehensive YouTube-style video platform with video playback, shorts feed, channel subscriptions, likes, comments, dynamic search, and responsive dark interface.",
+      tags: ["React 18", "Node.js", "Express.js", "MongoDB", "Tailwind CSS", "Video Streaming"],
+      mainImg: "/assets/projects/opentube.png",
+      subImg1: "/assets/projects/project3.png",
+      subImg2: "/assets/projects/project11.png",
+      liveUrl: "https://open-tube-1.onrender.com/",
+      githubUrl: "https://github.com/sourav842741/Open-Tube.git",
+    },
+    {
+      id: "05",
+      name: "BLOGVERSE",
+      type: "CROSS-PLATFORM TECH PUBLISHING & MOBILE APP",
+      desc: "Modern cross-platform engineering publication ecosystem featuring React web client, React Native Expo mobile app, Node.js/MongoDB API, live sync, SVG captchas, and dynamic markdown handbooks.",
+      tags: ["React 18", "React Native", "Expo SDK", "Node.js", "MongoDB Atlas", "JWT & RBAC"],
+      mainImg: "/assets/projects/blogverse.png",
+      subImg1: "/assets/projects/project2.png",
+      subImg2: "/assets/projects/project8.png",
+      liveUrl: "https://blog-website-1-ez1y.onrender.com",
+      githubUrl: "https://github.com/sourav842741/Blog-website.git",
+    },
+    {
+      id: "06",
+      name: "INSTADL",
+      type: "INSTAGRAM REELS & STORY DOWNLOADER",
+      desc: "High-speed Instagram media downloader web application built with React 18, Vite, Tailwind CSS, and Framer Motion. Features instant link parsing, video thumbnail preview, HD MP4 extraction, and download history.",
+      tags: ["React 18", "Vite", "Tailwind CSS", "Framer Motion", "Axios", "Vercel"],
+      mainImg: "/assets/projects/instadl.jpg",
+      subImg1: "/assets/projects/project11.png",
+      subImg2: "/assets/projects/project3.png",
+      liveUrl: "https://instagram-story-downloader-jet.vercel.app/",
+      githubUrl: "https://github.com/sourav842741/instagram-story-downloader",
+    },
+    {
+      id: "07",
       name: "MULTICART",
       type: "MULTI-VENDOR MARKETPLACE",
       desc: "Modern multi-vendor e-commerce platform allowing sellers to launch independent stores, manage catalogs, inventory, dynamic cart, and responsive storefronts.",
@@ -61,7 +97,7 @@ const Projects = () => {
       githubUrl: "https://github.com/sourav842741/Multicart",
     },
     {
-      id: "05",
+      id: "08",
       name: "CUSTOMER SUPPORT AI",
       type: "INTELLIGENT CHAT ASSISTANT",
       desc: "AI-powered real-time customer support platform integrated with Google Gemini API, streaming dynamic responses, conversational memory, and clean modern UI.",
@@ -73,7 +109,7 @@ const Projects = () => {
       githubUrl: "https://github.com/sourav842741/Customer-Support-ai",
     },
     {
-      id: "06",
+      id: "09",
       name: "STUDYSATHI AI",
       type: "SMART LEARNING PLATFORM",
       desc: "Full-stack AI-enabled educational portal providing instant AI doubt resolution, interactive study modules, progress analytics, and secure authentication.",
@@ -85,7 +121,7 @@ const Projects = () => {
       githubUrl: "https://github.com/sourav842741/StudySathi---Ai",
     },
     {
-      id: "07",
+      id: "10",
       name: "FUNCTION-CONTRACT",
       type: "RUNTIME API VALIDATOR (NPM)",
       desc: "Lightweight npm package that validates API payloads and function contracts at runtime, preventing silent schema drifts and frontend crashes.",
@@ -97,7 +133,7 @@ const Projects = () => {
       githubUrl: "https://github.com/sourav842741/function-contracter",
     },
     {
-      id: "08",
+      id: "11",
       name: "CREOVUE",
       type: "SOCIAL MEDIA & BLOG PLATFORM",
       desc: "Interactive social blogging ecosystem built with MERN stack allowing users to publish articles, like, follow creators, and manage JWT-secured profiles.",
@@ -137,7 +173,7 @@ const Projects = () => {
         <div className="relative w-full pb-32">
           {projectsData.map((project, index) => {
             // Precise peek offset so each card stacks cleanly over the previous one like a real deck
-            const stickyTop = `calc(76px + ${index * 14}px)`;
+            const stickyTop = `calc(68px + ${index * 9}px)`;
 
             return (
               <div
@@ -165,7 +201,7 @@ const Projects = () => {
                           {project.type}
                         </span>
                         <span className="hidden sm:inline-block text-[9px] font-mono tracking-widest text-purple-300/80 bg-purple-950/60 px-2.5 py-0.5 rounded-full border border-purple-500/30">
-                          {project.id} / 08
+                          {project.id} / {String(projectsData.length).padStart(2, "0")}
                         </span>
                       </div>
                       <h3 className="font-display text-white text-lg sm:text-2xl tracking-wide uppercase mt-0.5">

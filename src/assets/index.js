@@ -32,6 +32,9 @@ import project8 from './project8.png';
 import project9 from './project9.png';
 import project10 from './project10.png';
 import project11 from './project11.png';
+import opentube from './opentube.png';
+import blogverse from './blogverse.png';
+import instadl from './instadl.jpg';
 
 
 export {
@@ -69,5 +72,7 @@ export {
   project9,
   project10,
   project11,
-  
+  opentube,
+  blogverse,
+  instadl,
 };

@@ -261,7 +261,7 @@ const AboutMe = () => {
                 </div>
                 <div>
                   <span className="text-[10px] text-purple-400 tracking-[0.2em] font-bold uppercase font-body block">
-                    PROFESSIONAL EXPERIENCE
+                    EXPERIENCE
                   </span>
                   <h3 className="font-display text-white text-lg tracking-wide uppercase">
                     WORK HISTORY

@@ -26,7 +26,9 @@ import {
   project9,
   project10,
   project11,
-  
+  opentube,
+  blogverse,
+  instadl,
 } from "../assets";
 
 export const navLinks = [
@@ -296,21 +298,51 @@ const projects = [
 },
 
 
-{
-  name: "OpenTube – YouTube like Project",
-  description:
-    "OpenTube is a full-stack YouTube-inspired web application built with React, Tailwind CSS, Node.js, and MongoDB. It allows users to upload, watch, like, and comment on videos.",
-  tags: [
-    { name: "React", color: "blue-text-gradient" },
-    { name: "Tailwind CSS", color: "pink-text-gradient" },
-    { name: "Node.js", color: "green-text-gradient" },
-    { name: "Express", color: "orange-text-gradient" },
-    { name: "MongoDB", color: "white-text-gradient" },
-  ],
-  image: project3,
-  source_code_link: "https://github.com/sourav842741/Open-Tube",
-  live_demo_link: "https://open-tube-1.onrender.com/",
-},
+  {
+    name: "OpenTube – Full-Stack Video Streaming Platform",
+    description:
+      "Full-stack YouTube clone built with React, Tailwind CSS, Node.js, and MongoDB. Features video uploads, streaming player, Shorts reel, comments, likes/subscriptions, and responsive dark UI.",
+    tags: [
+      { name: "React", color: "blue-text-gradient" },
+      { name: "Tailwind CSS", color: "pink-text-gradient" },
+      { name: "Node.js", color: "green-text-gradient" },
+      { name: "Express", color: "orange-text-gradient" },
+      { name: "MongoDB", color: "white-text-gradient" },
+    ],
+    image: opentube,
+    source_code_link: "https://github.com/sourav842741/Open-Tube.git",
+    live_demo_link: "https://open-tube-1.onrender.com/",
+  },
+  {
+    name: "BlogVerse – Cross-Platform Tech Publishing & Mobile App",
+    description:
+      "Modern cross-platform engineering publication ecosystem with React web client, React Native Expo mobile app, Node/Express/MongoDB API, real-time live sync, SVG captchas, and dynamic markdown handbooks.",
+    tags: [
+      { name: "React 18", color: "blue-text-gradient" },
+      { name: "React Native", color: "green-text-gradient" },
+      { name: "Expo SDK", color: "white-text-gradient" },
+      { name: "Node.js", color: "pink-text-gradient" },
+      { name: "MongoDB Atlas", color: "green-text-gradient" },
+    ],
+    image: blogverse,
+    source_code_link: "https://github.com/sourav842741/Blog-website.git",
+    live_demo_link: "https://blog-website-1-ez1y.onrender.com",
+  },
+  {
+    name: "InstaDL – Instagram Reels & Story Downloader",
+    description:
+      "A fast, responsive Instagram media downloader built with React 18, Vite, Tailwind CSS, and Framer Motion. Enables users to paste Instagram Reel/Post links, preview video metadata, and download HD MP4 files with download history tracking.",
+    tags: [
+      { name: "React 18", color: "blue-text-gradient" },
+      { name: "Vite", color: "pink-text-gradient" },
+      { name: "Tailwind CSS", color: "white-text-gradient" },
+      { name: "Framer Motion", color: "green-text-gradient" },
+      { name: "Vercel", color: "yellow-text-gradient" },
+    ],
+    image: instadl,
+    source_code_link: "https://github.com/sourav842741/instagram-story-downloader",
+    live_demo_link: "https://instagram-story-downloader-jet.vercel.app/",
+  },
 
  {
   name: "Blinkit Clone",

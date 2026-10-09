@@ -33,7 +33,7 @@ const MarqueeGallery = () => {
     { name: "ENTERPRISE ERP", role: "OPERATIONS" },
   ];
 
-  // Real Projects List including the 3 new flagship additions
+  // Real Projects List including OpenTube, BlogVerse & flagship additions
   const projects = [
     {
       id: "placementor",
@@ -43,6 +43,33 @@ const MarqueeGallery = () => {
       liveUrl: "https://placementor.online/",
       githubUrl: "https://github.com/sourav842741/Place--Mentors.git",
       width: "w-[430px]",
+    },
+    {
+      id: "opentube",
+      name: "OpenTube Video Platform",
+      tech: "React · Node.js · Express · MongoDB",
+      img: "/assets/projects/opentube.png",
+      liveUrl: "https://open-tube-1.onrender.com/",
+      githubUrl: "https://github.com/sourav842741/Open-Tube.git",
+      width: "w-[430px]",
+    },
+    {
+      id: "blogverse",
+      name: "BlogVerse (Web & Mobile)",
+      tech: "React 18 · React Native · Expo · Node",
+      img: "/assets/projects/blogverse.png",
+      liveUrl: "https://blog-website-1-ez1y.onrender.com",
+      githubUrl: "https://github.com/sourav842741/Blog-website.git",
+      width: "w-[430px]",
+    },
+    {
+      id: "instadl",
+      name: "InstaDL Media Downloader",
+      tech: "React 18 · Vite · Tailwind · Framer Motion",
+      img: "/assets/projects/instadl.jpg",
+      liveUrl: "https://instagram-story-downloader-jet.vercel.app/",
+      githubUrl: "https://github.com/sourav842741/instagram-story-downloader",
+      width: "w-[420px]",
     },
     {
       id: "erp",
@@ -128,9 +155,9 @@ const MarqueeGallery = () => {
   ];
 
   // Distribute across 3 alternating rows
-  const row1 = [projects[0], projects[1], projects[3], projects[4]];
-  const row2 = [projects[2], projects[5], projects[6], projects[7]];
-  const row3 = [projects[1], projects[0], projects[2], projects[8], projects[9]];
+  const row1 = [projects[0], projects[1], projects[2], projects[3], projects[5], projects[7]];
+  const row2 = [projects[2], projects[3], projects[4], projects[6], projects[8], projects[9]];
+  const row3 = [projects[1], projects[3], projects[0], projects[2], projects[10], projects[11]];
 
   // Render a project card with hover reveal live project link
   const renderProjectCard = (item, idx) => (
